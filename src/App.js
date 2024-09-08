@@ -6,17 +6,8 @@ import Input from "./components/Input";
 import Label from "./components/Label";
 import Checkbox from "./components/CheckBox";
 
-import { initializeApp} from "firebase/app";
-import {
-
-  getFirestore,
-  doc,
-  setDoc,
-  getDoc,
-} from "firebase/firestore";
-import {
-
-} from "firebase/storage";
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 
 const App = () => {
   const [formElements, setFormElements] = useState([]);
@@ -52,16 +43,15 @@ const App = () => {
     return setFormElements([]);
   }
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyByL1V6BJ8nIHOgfwIfIkRx0TEmxwHOEf4",
-      authDomain: "drag-and-drop-design.firebaseapp.com",
-      databaseURL: "https://drag-and-drop-design-default-rtdb.firebaseio.com",
-      projectId: "drag-and-drop-design",
-      storageBucket: "drag-and-drop-design.appspot.com",
-
-      measurementId: "G-PC3HT02RCF",
-      appId: "1:962235075098:web:c9f768d38fdb42696d5fa3",
-    };
+  const firebaseConfig = {
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATA_BASE,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BACKET,
+    measurementId: process.env.MEASUREMENT_ID,
+    appId: process.env.APP_ID,
+  };
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
